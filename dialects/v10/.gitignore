@@ -1,11 +1,7 @@
 /ASLUAV.py
 /ASLUAV.xml
-ardupilotmega.py
-ardupilotmega.xml
 /autoquad.py
 /autoquad.xml
-common.py
-common.xml
 /matrixpilot.py
 /matrixpilot.xml
 /minimal.py
@@ -20,7 +16,5 @@ common.xml
 /standard.xml
 /test.py
 /test.xml
-uAvionix.py
-uAvionix.xml
 /ualberta.py
 /ualberta.xml
