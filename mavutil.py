@@ -1012,7 +1012,7 @@ class mavudp(mavfile):
             temp_addr = (a[0], int(a[1]))
             print("mavudp __init__ IPv4: ")
             print(temp_addr)
-        if len(a) > 2:
+        elif len(a) > 2:
             #IPv6
             socketFamily = socket.AF_INET6
             a = device.rsplit(':', 1)
