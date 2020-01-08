@@ -1002,17 +1002,17 @@ class mavserial(mavfile):
 
 class mavudp(mavfile):
     '''a UDP mavlink socket'''
-    def __init__(self, device, input=True, broadcast=False, source_system=255, source_component=0, use_native=default_native):
+    def __init__(self, device, input=True, broadcast=False, source_system=255, source_component=0, use_native=default_native, IPv6=False):
         print("Blake's mavudp start")
         a = device.split(':')
         #check for IPv4 vs IPv6 address
-        if len(a) == 2:
+        if IPv6 == False:
             #IPv4
             socketFamily = socket.AF_INET
             temp_addr = (a[0], int(a[1]))
             print("mavudp __init__ IPv4: ")
             print(temp_addr)
-        elif len(a) > 2:
+        elif IPv6 == True:
             #IPv6
             socketFamily = socket.AF_INET6
             a = device.rsplit(':', 1)
@@ -1661,6 +1661,8 @@ def mavlink_connection(device, baud=115200, source_system=255, source_component=
     # For legacy purposes we accept the following syntax and let the caller to specify direction
     if device.startswith('udp:'):
         return mavudp(device[4:], input=input, source_system=source_system, source_component=source_component, use_native=use_native)
+    if device.startswith('udp6:'):
+        return mavudp(device[4:], input=input, source_system=source_system, source_component=source_component, use_native=use_native, IPv6=True)
     if device.startswith('mcast:'):
         return mavmcast(device[6:], source_system=source_system, source_component=source_component, use_native=use_native)
 
